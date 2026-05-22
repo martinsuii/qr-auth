@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.QRAuth" parent="Theme.MaterialComponents.DayNight.NoActionBar.Bridge">
+        <item name="android:colorBackground">#FF0A0E14</item>
+        <item name="android:statusBarColor">#FF0A0E14</item>
+        <item name="android:navigationBarColor">#FF0A0E14</item>
+        <item name="android:windowBackground">@android:color/black</item>
+        <item name="android:navigationBarDividerColor">#00000000</item>
+        <item name="colorPrimary">#FF00E676</item>
+        <item name="colorPrimaryDark">#FF0A0E14</item>
+        <item name="colorAccent">#FF00E676</item>
+        <item name="android:textColorPrimary">#FFFFFFFF</item>
+        <item name="android:textColorSecondary">#B0FFFFFF</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+</resources>

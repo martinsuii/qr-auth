@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- Shield outline -->
+    <path
+        android:fillColor="#FF00FF80"
+        android:pathData="M54,20 L30,32 L30,52 C30,70 40,86 54,92 C68,86 78,70 78,52 L78,32 Z" />
+    <!-- QR pixel grid inside -->
+    <path
+        android:fillColor="#FF000000"
+        android:pathData="M44,38h4v4h-4zM48,38h4v4h-4zM44,42h4v4h-4zM52,38h4v4h-4zM56,38h4v4h-4zM52,42h4v4h-4zM56,42h4v4h-4zM52,46h4v4h-4zM56,46h4v4h-4zM44,50h4v4h-4zM44,54h4v4h-4zM48,50h4v4h-4zM48,54h4v4h-4zM60,50h4v4h-4zM60,54h4v4h-4zM64,50h4v4h-4zM64,54h4v4h-4zM44,58h4v4h-4zM44,62h4v4h-4zM48,58h4v4h-4zM48,62h4v4h-4zM60,58h4v4h-4zM60,62h4v4h-4zM64,58h4v4h-4zM64,62h4v4h-4zM52,58h4v4h-4zM52,62h4v4h-4zM56,66h4v4h-4zM60,66h4v4h-4zM56,70h4v4h-4zM60,70h4v4h-4zM48,66h4v4h-4zM44,66h4v4h-4z" />
+</vector>

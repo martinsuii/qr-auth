@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">QR Auth</string>
+    <string name="scan_instructions">Point camera at laptop terminal</string>
+    <string name="point_at_webcam">POINT AT LAPTOP WEBCAM</string>
+    <string name="show_pubkey">KEY</string>
+    <string name="scan_again">Done</string>
+    <string name="qr_code_desc">Response QR code for laptop webcam</string>
+    <string name="signing">Signing challenge…</string>
+    <string name="pubkey_label">PUBLIC KEY</string>
+</resources>
