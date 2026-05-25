@@ -66,7 +66,7 @@ sudo mv qr-auth /usr/local/bin/
 **Option B — Compile from source**
 
 ```bash
-go build -o ~/.local/bin/qr-auth .
+go build -o ~/qr-auth .
 ```
 
 ### 3. One-Time Setup
