@@ -35,9 +35,10 @@ Laptop Webcam  ◀──screen───  Phone Response QR
 
 **Option A — Download pre-built APK**
 
-Grab `qr-auth.apk` from the [latest release](https://github.com/martinsuii/qr-auth/releases/latest) and install:
+Get `qr-auth.apk` from the [v1.0.0 release](https://github.com/martinsuii/qr-auth/releases/tag/v1.0.0):
 
 ```bash
+wget https://github.com/martinsuii/qr-auth/releases/download/v1.0.0/qr-auth.apk
 adb install qr-auth.apk
 ```
 
@@ -54,11 +55,13 @@ adb install app/build/outputs/apk/debug/app-debug.apk
 
 **Option A — Download pre-built binary**
 
-Grab the `qr-auth` binary from the [latest release](https://github.com/martinsuii/qr-auth/releases/latest):
+Get `qr-auth` from the [v1.0.0 release](https://github.com/martinsuii/qr-auth/releases/tag/v1.0.0):
 
 ```bash
-sudo chmod +x qr-auth
+wget https://github.com/martinsuii/qr-auth/releases/download/v1.0.0/qr-auth
+chmod +x qr-auth
 sudo mv qr-auth /usr/local/bin/
+```
 ```
 
 **Option B — Compile from source**
