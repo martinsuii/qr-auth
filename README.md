@@ -62,7 +62,6 @@ wget https://github.com/martinsuii/qr-auth/releases/download/v1.0.0/qr-auth
 chmod +x qr-auth
 sudo mv qr-auth /usr/local/bin/
 ```
-```
 
 **Option B — Compile from source**
 
