@@ -20,12 +20,13 @@ import (
 )
 
 const (
-	challengePrefix = "CHALLENGE:"
-	signaturePrefix = "SIGNATURE:"
-	captureTimeout  = 60 * time.Second
+	challengePrefix  = "CHALLENGE:"
+	signaturePrefix  = "SIGNATURE:"
+	captureTimeout   = 60 * time.Second
+	challengeMaxAge  = 30 * time.Second
 )
 
-var hardcodedPubKeyB64 = "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="
+
 
 func main() {
 	videoDev := flag.String("video", "/dev/video0", "Video device for zbarcam")
@@ -80,6 +81,13 @@ func runAuth(pubKey ed25519.PublicKey, videoDev, unlockScript string) {
 
 	if !ed25519.Verify(pubKey, challenge, sig) {
 		fatalf("SIGNATURE VERIFICATION FAILED - access denied")
+	}
+
+	challengeTS := int64(binary.BigEndian.Uint64(challenge[32:40]))
+	now := time.Now().Unix()
+	if abs(now-challengeTS) > int64(challengeMaxAge.Seconds()) {
+		fatalf("challenge expired (age=%ds, max=%ds) — scan the QR faster and try again",
+			now-challengeTS, int64(challengeMaxAge.Seconds()))
 	}
 
 	fmt.Println()
@@ -204,12 +212,7 @@ func loadPublicKey(pubKeyFile, pubKeyB64 string) ed25519.PublicKey {
 
 	data, err := os.ReadFile(pubKeyFile)
 	if err != nil {
-		key, err := base64.StdEncoding.DecodeString(hardcodedPubKeyB64)
-		if err != nil {
-			fatalf("failed to read public key file %s: %v\nRun './qr-auth --setup' first.", pubKeyFile, err)
-		}
-		fmt.Fprintf(os.Stderr, "WARNING: using placeholder public key. Run './qr-auth --setup' first.\n")
-		return ed25519.PublicKey(key)
+		fatalf("no public key found at %s\n\nRun './qr-auth --setup' first to register your phone's public key.", pubKeyFile)
 	}
 
 	pubKeyB64 = strings.TrimSpace(string(data))
@@ -316,4 +319,11 @@ func printDiv() {
 func fatalf(format string, args ...interface{}) {
 	fmt.Fprintf(os.Stderr, "ERROR: "+format+"\n", args...)
 	os.Exit(1)
+}
+
+func abs(x int64) int64 {
+	if x < 0 {
+		return -x
+	}
+	return x
 }

@@ -113,7 +113,8 @@ class MainActivity : AppCompatActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
-        analyzerExecutor.shutdownNow()
+        analyzerExecutor.shutdown()
+        try { analyzerExecutor.awaitTermination(500, java.util.concurrent.TimeUnit.MILLISECONDS) } catch (_: InterruptedException) {}
         scanLineAnimator?.cancel()
     }
 
@@ -529,6 +530,12 @@ class MainActivity : AppCompatActivity() {
         )
         if (canAuth != BiometricManager.BIOMETRIC_SUCCESS) {
             Log.w(TAG, "Biometrics not available (status=$canAuth), proceeding without")
+            runOnUiThread {
+                Toast.makeText(this@MainActivity,
+                    "WARNING: No biometric sensor detected — proceeding without identity verification. Enroll a fingerprint or face in Settings for stronger security.",
+                    Toast.LENGTH_LONG
+                ).show()
+            }
             barcodeFound = true
             val challenge = pendingChallengeB64
             pendingChallengeB64 = null
