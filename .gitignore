@@ -21,3 +21,4 @@ Thumbs.db
 *.log
 
 qr-auth.apk
+*.idsig
